@@ -1,13 +1,20 @@
 FROM docker:19
 
+ENV KUBECTL_VERSION=v1.18.2
+ENV HELM_FILENAME=helm-v3.1.2-linux-amd64.tar.gz
+ENV HELM_DOWNLOAD_URL=https://get.helm.sh/${HELM_FILENAME}
+
+ENV GRADLE_FILE=gradle-6.5.1-bin.zip
+ENV GRADLE_INSTALL_DIR=/opt/gradle
+
 RUN apk update && \
     apk upgrade && \
     apk add zip unzip && \
     apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
-    mkdir /opt/gradle && \
-    wget -q -O "/opt/gradle/gradle-6.5.1-bin.zip" "https://services.gradle.org/distributions/gradle-6.5.1-bin.zip" && \
-    unzip -d /opt/gradle /opt/gradle/gradle-6.5.1-bin.zip && \
-    export PATH=$PATH:/opt/gradle/gradle-6.5.1/bin && \
+    mkdir $GRADLE_INSTALL_DIR && \
+    wget -q -O "$GRADLE_INSTALL_DIR/$GRADLE_FILE" "https://services.gradle.org/distributions/$GRADLE_FILE" && \
+    unzip -d $GRADLE_INSTALL_DIR $GRADLE_INSTALL_DIR/$GRADLE_FILE && \
+    export PATH=$PATH:$GRADLE_INSTALL_DIR/gradle-6.5.1/bin && \
     export HELM_TMP_ROOT="$(mktemp -dt helm-installer-XXXXXX)" && \
     export HELM_TMP_FILE="$HELM_TMP_ROOT/$HELM_FILENAME" && \
     echo ${HELM_TMP_FILE} && \
