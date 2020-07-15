@@ -15,6 +15,7 @@ RUN apk update && \
     wget -q -O "$GRADLE_INSTALL_DIR/$GRADLE_FILE" "https://services.gradle.org/distributions/$GRADLE_FILE" && \
     unzip -d $GRADLE_INSTALL_DIR $GRADLE_INSTALL_DIR/$GRADLE_FILE && \
     export PATH=$PATH:$GRADLE_INSTALL_DIR/gradle-6.5.1/bin && \
+    ln -s $GRADLE_INSTALL_DIR/gradle-6.5.1/bin/gradle /usr/local/bin/gradle && \
     export HELM_TMP_ROOT="$(mktemp -dt helm-installer-XXXXXX)" && \
     export HELM_TMP_FILE="$HELM_TMP_ROOT/$HELM_FILENAME" && \
     echo ${HELM_TMP_FILE} && \
