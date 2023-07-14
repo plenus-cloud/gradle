@@ -1,7 +1,7 @@
-FROM docker:19
+FROM docker:23
 
-ENV KUBECTL_VERSION=v1.18.2
-ENV HELM_FILENAME=helm-v3.1.2-linux-amd64.tar.gz
+ENV KUBECTL_VERSION=v1.27.3
+ENV HELM_FILENAME=helm-v3.12.2-linux-amd64.tar.gz
 ENV HELM_DOWNLOAD_URL=https://get.helm.sh/${HELM_FILENAME}
 
 ENV GRADLE_FILE=gradle-6.5.1-bin.zip

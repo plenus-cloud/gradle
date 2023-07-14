@@ -2,8 +2,8 @@
 
 Docker image with:
 
-* kubectl
-* helm
+* kubectl 1.27.3
+* helm 3.12.2
 * openjdk 11
 * gradle 6.5
 
