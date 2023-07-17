@@ -10,7 +10,7 @@ ENV GRADLE_INSTALL_DIR=/opt/gradle
 RUN apk update && \
     apk upgrade && \
     apk add zip unzip && \
-    apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
+    apk --no-cache add openjdk17 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
     mkdir $GRADLE_INSTALL_DIR && \
     wget -q -O "$GRADLE_INSTALL_DIR/$GRADLE_FILE" "https://services.gradle.org/distributions/$GRADLE_FILE" && \
     unzip -d $GRADLE_INSTALL_DIR $GRADLE_INSTALL_DIR/$GRADLE_FILE && \
